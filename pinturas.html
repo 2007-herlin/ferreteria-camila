@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pinturas - Ferretería Camila</title>
+  <style>
+    body { font-family: sans-serif; background-color: #f9f9f9; margin: 0; padding: 0; }
+    header { background-color: #3f51b5; color: #fff; padding: 20px; text-align: center; }
+    h1 { margin: 0; }
+    .boton-regresar {
+      display: inline-block;
+      background-color: #3f51b5;
+      color: white;
+      padding: 10px 15px;
+      margin: 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .contenedor-titulo {
+      text-align: left;
+      padding-left: 20px;
+    }
+    .grid-productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+      padding: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .producto {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .producto:hover { transform: translateY(-5px); }
+    .producto img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 8px;
+    }
+    .producto h3 { font-size: 14px; margin: 8px 0 4px; color: #333; }
+    .producto p { margin: 0; color: #666; font-weight: bold; }
+    .cantidad-input {
+      width: 50px;
+      padding: 4px;
+      margin-top: 5px;
+    }
+    .producto button {
+      background-color: #3f51b5;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin-top: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header><h1>Ferretería Camila</h1></header>
+
+  <div class="contenedor-titulo">
+    <a href="catalogo.html" class="boton-regresar">← PINTURAS</a>
+  </div>
+
+  <div class="grid-productos">
+ 
+    <div class="producto">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCBFUKDesBwiD0FDac0HVPJlVoXTulOMe7wg&s">
+      <h3>Latex Pato CPP Blanco 1 galón</h3>
+      <p class="price">S/39.90</p>
+      <input class="cantidad-input" type="number" min="1" value="1">
+      <button onclick="agregarAlCarritoDesdeElemento(this)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREx4ZzJMURcEX0JOEhSamGiX9EdtIlbPudYA&s">
+      <h3>Tekno latex teknocolor Blanco 1 galón</h3>
+      <p class="price">S/95</p>
+      <input class="cantidad-input" type="number" min="1" value="1">
+      <button onclick="agregarAlCarritoDesdeElemento(this)">Agregar al carrito</button>
+    </div>
+
+    
+    <div class="producto">
+      <img src="https://promart.vteximg.com.br/arquivos/ids/8887750-1000-1000/135856.jpg?v=638845947838800000">
+      <h3>Satinado CPP Blanco 1/4 galón</h3>
+      <p class="price">S/30.60</p>
+      <input class="cantidad-input" type="number" min="1" value="1">
+      <button onclick="agregarAlCarritoDesdeElemento(this)">Agregar al carrito</button>
+    </div>
+
+    
+    <div class="producto">
+      <img src="https://promart.vteximg.com.br/arquivos/ids/9147538-1000-1000/134961.jpg?v=638889803777930000">
+      <h3>Latex antihongo Satín Blanco Zinsser</h3>
+      <p class="price">S/62</p>
+      <input class="cantidad-input" type="number" min="1" value="1">
+      <button onclick="agregarAlCarritoDesdeElemento(this)">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://herramientas.cl/media/catalog/product/1/0/1002051406_83.jpg">
+      <h3>Ultra cover 2x Turquesa satinado</h3>
+      <p class="price">S/20</p>
+      <input class="cantidad-input" type="number" min="1" value="1">
+      <button onclick="agregarAlCarritoDesdeElemento(this)">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRldKmI2K7E5l4K95jr1nGFm9ZlIyVDCkXZTA&s">
+      <h3>Barniz T-81 Nogal Tekno 1/4 galón</h3>
+      <p class="price">S/27</p>
+      <input class="cantidad-input" type="number" min="1" value="1">
+      <button onclick="agregarAlCarritoDesdeElemento(this)">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR583vO99qD8EVGLEsJLae_IOFzJRlwQNMJmg&s">
+      <h3>Pintura Látex Gamusa 1 galón Fast</h3>
+      <p class="price">S/29.90</p>
+      <input class="cantidad-input" type="number" min="1" value="1">
+      <button onclick="agregarAlCarritoDesdeElemento(this)">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxPzPDTmSiuV2tb1aSCJmeXpImIPNzczliLQ&s">
+      <h3>Poxi acero inoxidable Specialty</h3>
+      <p class="price">S/55.40</p>
+      <input class="cantidad-input" type="number" min="1" value="1">
+      <button onclick="agregarAlCarritoDesdeElemento(this)">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://promart.vteximg.com.br/arquivos/ids/8887794-700-700/135964.jpg?v=638845948316270000">
+      <h3>Supermate Blanco Decora 4 gal Vencedor</h3>
+      <p class="price">S/324</p>
+      <input class="cantidad-input" type="number" min="1" value="1">
+      <button onclick="agregarAlCarritoDesdeElemento(this)">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://promart.vteximg.com.br/arquivos/ids/5188217-700-700/142296.jpg?v=637844249964500000">
+      <h3>Endurecedor epoxi Jet 1 galón</h3>
+      <p class="price">S/161</p>
+      <input class="cantidad-input" type="number" min="1" value="1">
+      <button onclick="agregarAlCarritoDesdeElemento(this)">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsjoXL62QmbG_UU7XKwpFjsNMEA7K3WLjwkQ&s">
+      <h3>Aceite de Teca Varathane 3.7L</h3>
+      <p class="price">S/352</p>
+      <input class="cantidad-input" type="number" min="1" value="1">
+      <button onclick="agregarAlCarritoDesdeElemento(this)">Agregar al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://media.falabella.com/sodimacPE/1337823_01/w=800,h=800,fit=pad">
+      <h3>Laca Sellamate 1 galón Paracas</h3>
+      <p class="price">S/63</p>
+      <input class="cantidad-input" type="number" min="1" value="1">
+      <button onclick="agregarAlCarritoDesdeElemento(this)">Agregar al carrito</button>
+    </div>
+  </div>
+
+  <script>
+    function agregarAlCarritoDesdeElemento(boton) {
+      const productoDiv = boton.parentElement;
+      const nombre = productoDiv.querySelector('h3').innerText;
+      const precioTexto = productoDiv.querySelector('.price').innerText.replace('S/', '').trim();
+      const precio = parseFloat(precioTexto);
+      const cantidad = parseInt(productoDiv.querySelector('input[type="number"]').value);
+
+      if (isNaN(cantidad) || cantidad <= 0) {
+        alert("Por favor ingresa una cantidad válida.");
+        return;
+      }
+
+      let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      const index = carrito.findIndex(p => p.nombre === nombre);
+      if (index !== -1) {
+        carrito[index].cantidad += cantidad;
+      } else {
+        carrito.push({ nombre, precio, cantidad });
+      }
+
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      alert(`${cantidad} unidad(es) de "${nombre}" agregadas al carrito.`);
+    }
+  </script>
+</body>
+</html>

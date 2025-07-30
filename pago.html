@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagos - Ferretería Camila</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      color: #007bff;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .resumen-total, .metodos, .boleta, .politicas-pago {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .metodo-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .metodo-item input[type="radio"] {
+      transform: scale(1.3);
+    }
+
+    .yape-info {
+      margin-top: 10px;
+      padding: 10px;
+      border: 2px dashed #28a745;
+      background-color: #eaffea;
+      border-radius: 8px;
+      display: none;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table th, table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    table thead {
+      background-color: #007bff;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+
+      table th, table td {
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" style="display:inline-block; margin-bottom:15px; color:#007bff; font-weight:bold; text-decoration:none;">← Volver al catálogo</a>
+
+  
+    <div class="boleta" id="boleta">
+      <h2>🧾 Boleta de Compra</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio unitario</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="detalle-carrito"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" style="text-align: right;">Subtotal:</td>
+            <td id="subtotal-boleta">S/ 0.00</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="text-align: right;">IGV (18%):</td>
+            <td id="igv-boleta">S/ 0.00</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="text-align: right;"><strong>Total:</strong></td>
+            <td id="total-boleta"><strong>S/ 0.00</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="resumen-total" id="resumen-pago">
+      <button onclick="mostrarMetodos()">Pagar</button>
+    </div>
+
+    <div class="metodos" id="seccion-metodos" style="display: none;">
+      <h2>💳 Elige un método de pago</h2>
+
+      <div class="metodo-item">
+        <input type="radio" name="metodo" onclick="seleccionarMetodo('yape')" /> Pago por Yape
+      </div>
+
+      <div class="metodo-item">
+        <input type="radio" name="metodo" onclick="seleccionarMetodo('transferencia')" /> Transferencia bancaria
+      </div>
+
+      <!-- Formulario Yape -->
+      <div class="yape-info" id="formulario-yape">
+        <p><strong>📱 Yape al número:</strong> 958845531</p>
+        <p><strong>👤 Nombre:</strong> Yeferson</p>
+
+        <label>Nombres:</label>
+        <input type="text" id="nombre" placeholder="Ingresa tus nombres" />
+
+        <label>Apellidos:</label>
+        <input type="text" id="apellidos" placeholder="Ingresa tus apellidos" />
+
+        <label>DNI:</label>
+        <input type="text" id="dni" placeholder="Ingresa tu DNI" />
+
+        <label>Ubicación:</label>
+        <input type="text" id="ubicacion" placeholder="Ciudad / Dirección" />
+
+        <!-- ✅ Reglas del pago -->
+        <div id="condiciones" style="margin-top: 15px;">
+          <h3>📌 Reglas para completar el pago:</h3>
+          <ul>
+            <li>✅ Verifica que el total y los productos sean correctos.</li>
+            <li>✅ Todos los datos personales deben estar correctamente llenados.</li>
+            <li>✅ Solo se aceptan pagos desde cuentas válidas y registradas.</li>
+            <li>✅ El comprobante de pago debe ser enviado por WhatsApp o correo si se solicita.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mensaje para transferencia -->
+      <div class="yape-info" id="mensaje-transferencia">
+        <p>Este método estará disponible próximamente.</p>
+      </div>
+
+      <button onclick="procesarPago()">Confirmar Pago</button>
+    </div>
+  </div>
+
+  <script>
+    function mostrarMetodos() {
+      document.getElementById("seccion-metodos").style.display = "block";
+    }
+
+    let metodoSeleccionado = "";
+
+    function seleccionarMetodo(metodo) {
+      metodoSeleccionado = metodo;
+
+      const yapeForm = document.getElementById("formulario-yape");
+      const mensajeTransferencia = document.getElementById("mensaje-transferencia");
+
+      if (metodo === "yape") {
+        yapeForm.style.display = "block";
+        mensajeTransferencia.style.display = "none";
+      } else if (metodo === "transferencia") {
+        yapeForm.style.display = "none";
+        mensajeTransferencia.style.display = "block";
+      }
+    }
+
+    function procesarPago() {
+      if (metodoSeleccionado === "yape") {
+        const nombre = document.getElementById("nombre").value.trim();
+        const apellidos = document.getElementById("apellidos").value.trim();
+        const dni = document.getElementById("dni").value.trim();
+        const ubicacion = document.getElementById("ubicacion").value.trim();
+
+        if (!nombre || !apellidos || !dni || !ubicacion) {
+          alert("⚠️ Por favor, completa todos los campos antes de confirmar el pago.");
+          return;
+        }
+
+        // Confirmación
+        alert("✅ Gracias por su compra. En breve nos pondremos en contacto.");
+
+        // Limpiar datos
+        document.getElementById("nombre").value = "";
+        document.getElementById("apellidos").value = "";
+        document.getElementById("dni").value = "";
+        document.getElementById("ubicacion").value = "";
+
+        // Limpiar carrito
+        localStorage.removeItem("carrito");
+        cargarBoleta();
+
+        // Ocultar métodos
+        document.getElementById("seccion-metodos").style.display = "none";
+      } else if (metodoSeleccionado === "transferencia") {
+        alert("❌ Este método aún no está disponible.");
+      } else {
+        alert("⚠️ Por favor, selecciona un método de pago.");
+      }
+    }
+
+    function cargarBoleta() {
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const detalle = document.getElementById("detalle-carrito");
+      let subtotal = 0;
+
+      detalle.innerHTML = "";
+
+      carrito.forEach(producto => {
+        const fila = document.createElement("tr");
+
+        const subtotalProducto = producto.precio * producto.cantidad;
+        subtotal += subtotalProducto;
+
+        fila.innerHTML = `
+          <td>${producto.nombre}</td>
+          <td>${producto.cantidad}</td>
+          <td>S/ ${producto.precio.toFixed(2)}</td>
+          <td>S/ ${subtotalProducto.toFixed(2)}</td>
+        `;
+        detalle.appendChild(fila);
+      });
+
+      const igv = subtotal * 0.18;
+      const total = subtotal + igv;
+
+      document.getElementById("subtotal-boleta").textContent = "S/ " + subtotal.toFixed(2);
+      document.getElementById("igv-boleta").textContent = "S/ " + igv.toFixed(2);
+      document.getElementById("total-boleta").textContent = "S/ " + total.toFixed(2);
+    }
+
+    window.onload = cargarBoleta;
+  </script>
+</body>
+</html>

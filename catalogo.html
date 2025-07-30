@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ferretería Camila - Catálogo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      margin: 0;
+    }
+
+    aside {
+      width: 250px;
+      background: #f4f4f4;
+      padding: 15px;
+      border-right: 1px solid #ccc;
+    }
+
+    aside h3 {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    .sidebar-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 8px 0;
+      font-size: 14px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .sidebar-btn:hover {
+      color: #0074cc;
+      text-decoration: underline;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 100px;
+    }
+
+    .titulo {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .categorias {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .categoria {
+      border: 2px solid #0074cc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .categoria img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .categoria h4 {
+      margin: 10px 0;
+    }
+
+    .boton-next {
+      background: #0074cc;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .servicio input {
+      margin-right: 5px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <aside>
+    <div class="logo">
+      <img src="imagen1.jpg"Ferretería Camila" />
+    </div>
+
+   <h3>AYUDA Y SERVICIOS</h3>
+
+<button class="sidebar-btn" onclick="window.location.href='servicios.html'">
+  🛠️ Soporte Técnico (24/7)
+</button>
+
+<button class="sidebar-btn" onclick="window.location.href='servicios.html'">
+  📞 Llámanos
+</button>
+
+
+</a>
+
+
+    <h3>SERVICIOS ADICIONALES</h3>
+    <ul class="servicio">
+      <li><label><input type="checkbox" /> Instalación (+$20)</label></li>
+      <li><label><input type="checkbox" /> Entrega express (+$15)</label></li>
+    </ul>
+  </aside>
+
+  <main>
+  <div class="titulo">
+  <span style="float: left; cursor: pointer; font-size: 20px;" onclick="window.location.href='index.html'">🏠</span>
+  CATÁLOGO DE PRODUCTOS
+</div>
+
+    <div class="categorias">
+      <div class="categoria">
+  <h4>CONSTRUCCIÓN</h4>
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJgAAACUCAMAAABY3hBoAAAAaVBMVEUAAAD////u7u7t7e3s7Ozz8/P6+vrv7+/29vYoKChtbW0bGxvd3d2lpaVKSkqGhoa8vLzU1NTIyMhBQUE0NDTl5eVoaGhVVVV2dnZPT0+1tbWOjo7Ozs4XFxdbW1suLi6ZmZkQEBB+fn4BFrb7AAAKL0lEQVR4nO1ca5uCKBQGuVaaWWmNNY31/3/kIngBAVHHmXb3mfNhRuLAeRM4Vw1ASSSqiagGqq8xlddUNljDhTQuJof4uJDOhRquSOeKNK5Il4hlC/wB+wO2OjDkBIYRQrhhw7LRstXXkYOLiQbuRYoG83D1c2HPXGgoESFAJFFFeoPLa253GI0oV8Rg18Ht4dPmMriAtbwIOVYkQoN7jdTtOZ6BolNS3x402APItboRGkrEDi4bWBRpbIENxVtcgrKpG8rgkhKRxhWtASyPdz2wMm++8tuB8fSBNz2wQ1Xk/EeBOffYcDJEyANcDGAJOMccdVzePcYsic49Jk8Ca84Iky2onRHiPUlbAC75zgAGTrn7vOnHldoSmc7VDOn0WE2dHqup0z2CIpsrBUNglfizH87FrLmQQyKyuPBSzR8DJzBQrq355wLb1igeNrBT9F5bmX9JFNWzB5YWCt97gSXARzfI1zXi8za/H1hhzhVN2vy2RAykKTcNeztSM/+R7OhGwpcX2Ia2t7omp8PhlYg0rkWaH8GrF9gnnaT5nSpd51oIrPAC200D9kO2cuSO7eBPAEPTgLHy5AUGErwOsImbH2ubnx78sARV7YJ7vO3I8qOxgws0Xq0iu+HqOJBqBFeBD4wOhvsbXonOYMS6iXoAEWXgCpOnD9cLViAhbt2AhnN1RtxetiWavwJnjLdOaPuMb0FB2JuM+As8KxJXl42J6pIeuTgWF0beZStpCcA5jUXUlrXRyPMoWnElTuuNEN8RXAJMN7zIYrM8ZKnHNpft9rPb89uHBPkcMeLIB8yW2N8xxlivtOpG+y3razbkeoHDdQeG9HwcwGfDxSfP5eJiDDgMezNyxPcVJglBmpXVraeqzHKhfjpbKUcwx1y2w+GSuEjz17ayEanUjuqA4v9UI/4ztlIZ8azjakXyejnfasTJPX2AowWMgK80IW+NxInwYe8OYA9xJlcCtmjzi8sWmM5FwAWac31j8zefySPafiVJzUi9wTWuEiR0wMVzYSlbLqUuKPHNFZK4UMFCeBQgBokK4Q4lw7lsBRtNkrg8B4tPJ8zMBBC9yuUNxJVck/gjyeEXKEWnxkXizwsPAiMl/WFg8XOTE22RGH2IMDwEjFbgguYAk85Z0FHUuYRD+IE7+4MITcHW5ho4irVfAk75kMvlKC5wrZuG+PKfBw6bbJpwgK7EN7xt0Ls09psjdE1sCFkUibdhRvkEH9Uxi+OsFH7QjRKMBn70IBjBrfuWNNZ1JBiJrA01I2uN0i9hHXfCKdsUedAr5OzReUgp1zbUeiapvxfoUFW3qiqR2lBjwJgRJhdsdWCQaJ5O869pcE6414iLPanTI18XWH6ortetl9LkSJzA1IHUaZeFgQVtBlOqHcbbMwjQ81TlLbA+nY5IZsV7u0Mj0ZXAn5W4uz9cSBx0y8nQlaA3B19FfRJnZa1LO/zw0ekOtT0gF2SwxRRdG/j6ss02Sf7Uk4vKITAIZS5mtzfC5H3cAVtqK11LEUamA4OH5/WeR/l9q9/b/JvAXAsxTochMKFNxKFODjHMtPzas/xW1jqejQvs6lUySjaE3+pDvXmZ0yXOkk2gENw2RlKIXtrk1Cwqk0vT8zCUWoEcpbCJZcGhcpxGj1ZpKGWtHZ+E73v8mDgkTtP8/GMRMLBtjVg9FdeOz7mvFHzFBGtc80zSgh2mqOpEIiNz+8m72sqRfsNWVkuBybBJiuSZ/nEPrKTfKT0v2foNNRkOkhtG9ksWYgWlNRp/6Tl0KoOW20/nGEp32fxuKVS79gK5Rw9MeIQGk3jjEjmRToSJmMWsim1yYQXE/31zr1yP0DiWd6j5STbdejtoSyJYmR/VRqF+yCVuTu1CI07uny6Bk+kFB6UUmUjg+aWk3wt4DWC73c5bfOh5zHZq7tEXVeeBke9E4ngALMtxGsB1yvIxV6ToJc6MxIehpgEs5zzkAJ0w535f94RtiZEjEp8S8OqbH0MYvGNiBupTfZuY20fQkjhR8y8ABmPPST4GUp2zjLi+lFOBwaPzjJSrJoezBcAodz0CkdIVSs+4253ZWdLXLGARTL/OJn1t1U6fBMz2oxs2ndQDkuUsYBiROB9QMx2bkrU2fF/VSC2qa0VpfKyl5qI/BAxzNVesRoqx8k96U7O98FCiw5Nw6DHqkXeUwGJCwsCYOvWZx5R1GcV5pec1gKlTn3m8khy6NH/QiL8LWNBWfh9YviIwzav9JWATKyNaZWccmDDiYWBE1ZLGgBkVJ1ctydJjiI8Cm67HMLl77GUeLSo9rwSs9uN8wNgiW+lbysO7gf3n7th0YHgNYJY18N6xw/F5Pu9qYMJr6ByHr7PekD0XJoEhL7CY+R+eHGatredGmpyVVn9SM1HiKj0YJAfR7qovXykhVOoIqaA6icx+UqUFq+thjY28ipqakoO8LuqLLHu010ZHCm9F0fdcm+trkXQaSlu3b5SekSeoUBvOpgv0pNK2zrrX8rgS7d1yfMAe8OLuuP7fgPlKz6sCM55RDDmKfJxWBBaQNKBAJI4iz172b34fMGqUsZ3Pweo3MVR6ZusBW/dpqH8tMPQvAqZnrX/sjgVrMcDwaiPdZshrPPNUfvg1fxvrEN0wMkvixNIzSaXNe11rUnZRXsZZ0Te0nhu8bR0dr2syKGMveWGqqYIpar6GjOBJ36M3IO+vCe0acgDrhtedDVcncWbAu9s4KcvO+5o+FO2bxr6A6X6v9bSNU5mfnBPVPt2aAW/m2VYnuHV3JOq1KpvWjcSf2d3dsfeV8ZPcU+qZA6zP0vmBee7YQmAhI26/7TgfmHcpfcDG3q/0l559wch9PWBswhupbwK2ZsD7B0wBk95gD2wk4P2hPaY7ipEW8FrVZv4Lp5JP+C0CTY/h1TX/WEZxwQtTXXxtUh4/3E//wcQ54HGMnM8MFkXk1Pzh0rOHqC9bwT0dlI/MtiTgNeLKi9NB+Dwen07HoYAfbo/iNYwrJwLz5ZDn5i4evodHukh85vP8ulerZ3vmB7wjwMbfgBikoQIB7/xgxAdsJOBd8tbz/EjcC+zdceUvAVtxKf8vwAKbf8WlDGd7XG89+wrB0XrqYt7vFa2fURzRY7Myio7l1fUwnqn5P6AnlgxnrcNGXE900DJxUp5Xzs9L6BlwbDU/8QELG/FMp7gjSvvrWOvIIdY7+ksCY72jJzoDmFF63jlJOIquj58f8Pp0ddQe7KezA8MJRtz1QKWbFkTi3tzFhFNpH4gVgxEfsGiCHjOWd7T0/BdX/gFzAQtnrSWwzqutNfMvbH5mSIwi1x1rP+sLwb+UuDOK3ZNKz29IdU4rPa94x34lOfz+rDUsJR0U9Q2GS72naxzhvbSHiH8x14drI/gMYChC/W8dyJKIum7qsura/HELi4tO4mpfYDeMOLKBed3dYaN7sGOUq2uoAo1jCLfNt2uuUDCiBxD6W8/G+8yel8I1Lt2PHi89t3P9A33AFNcGxfurAAAAAElFTkSuQmCC" />
+  <br />
+  <button class="boton-next" onclick="window.location.href='construccion.html'">NEXT ➔</button>
+</div>
+
+      <div class="categoria">
+  <h4>PLOMERÍA</h4>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs6oBkj3e3Iz0gV2ZSgVP8uTYAGCGDUcLkRQ&s" />
+  <br />
+  <a href="plomeria.html">
+    <button class="boton-next">NEXT ➔</button>
+  </a>
+</div>
+
+      <div class="categoria">
+  <h4>ELECTRICIDAD</h4>
+  <img src="data:image/jpeg;base64,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" />
+  <br />
+  <a href="electricidad.html">
+    <button class="boton-next">NEXT ➔</button>
+  </a>
+</div>
+
+      <div class="categoria">
+  <h4>LIMPIEZA - ADHESIVOS</h4>
+  <img src="https://cdn-icons-png.flaticon.com/512/994/994928.png" />
+  <br />
+  <a href="limpieza.html">
+    <button class="boton-next">NEXT ➔</button>
+  </a>
+</div>
+
+      <div class="categoria">
+        <h4>SEGURIDAD</h4>
+        <img src="https://i0.wp.com/industrialmindset.com/wp-content/uploads/2024/12/navegando-en-los-mundos-de-seguridad-de-procesos.jpg?w=1400&ssl=1" />
+        <br />
+     <button class="boton-next" onclick="window.location.href='seguridad.html'">NEXT ➔</button>
+      </div>
+      <div class="categoria">
+        <h4>MATERIALES DE FIJACIÓN</h4>
+        <img src="https://img.freepik.com/fotos-premium/materiales-fijacion-metal-sobre-fondo-blanco-tornillos-autorroscantes_811250-1390.jpg" />
+        <br />
+         <button class="boton-next" onclick="window.location.href='fijacion.html'">NEXT ➔</button>
+      </div>
+      <div class="categoria">
+        <h4>HERRAMIENTAS</h4>
+        <img src="https://www.shutterstock.com/image-vector/icons-set-industrial-tools-260nw-89411233.jpg" />
+        <br />
+        <button class="boton-next" onclick="window.location.href='herramientas.html'">NEXT ➔</button>
+      </div>
+      <div class="categoria">
+  <h4>PINTURAS</h4>
+  <img src="https://static.vecteezy.com/system/resources/previews/001/911/889/non_2x/industrial-spray-painter-holding-spray-paint-gun-vector.jpg" />
+  <br />
+  <button class="boton-next" onclick="window.location.href='pinturas.html'">NEXT ➔</button>
+</div>
+
+
+    </div>
+  </main>
+
+</body>
+</html>

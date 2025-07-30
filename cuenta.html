@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Cuenta - Ferretería Camila</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+
+    .cuenta-container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    .usuario {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .cuenta-opciones button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .cuenta-opciones button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+  <!-- Bloquea si no ha iniciado sesión -->
+  <script>
+    if (localStorage.getItem('logueado') !== 'true') {
+      alert("Debes iniciar sesión para acceder a tu cuenta.");
+      window.location.href = 'index.html';
+    }
+  </script>
+</head>
+<body>
+
+  <div class="cuenta-container">
+    <h2>Mi Cuenta</h2>
+
+    <div class="usuario">
+      Bienvenido, <strong id="nombreUsuario"></strong>
+    </div>
+
+    <div class="cuenta-opciones">
+      <button onclick="alert('Aquí se verán tus pedidos.')">📦 Ver historial de pedidos</button>
+      <button onclick="alert('Aquí puedes editar tus datos.')">📝 Editar perfil</button>
+      <button onclick="cerrarSesion()">🚪 Cerrar sesión</button>
+    </div>
+  </div>
+
+  <script>
+    // Mostrar el nombre del usuario
+    document.getElementById("nombreUsuario").textContent = localStorage.getItem("usuario");
+
+    // Cerrar sesión
+    function cerrarSesion() {
+      localStorage.removeItem('logueado');
+      localStorage.removeItem('usuario');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
