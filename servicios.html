@@ -1,133 +1,225 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ferretería Camila - Ayuda y Servicios</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      min-height: 100vh;
       display: flex;
       justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+      color: #34495e;
+    }
+
+    /* Pinceladas abstractas como "manchas de pintura" */
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.3;
+      z-index: -1;
+    }
+    body::before {
+      width: 350px;
+      height: 350px;
+      background: #ff6f91;
+      top: 10%;
+      left: -100px;
+      transform: rotate(45deg);
+      clip-path: polygon(40% 0%, 100% 20%, 60% 100%, 0% 80%);
+    }
+    body::after {
+      width: 400px;
+      height: 400px;
+      background: #845ec2;
+      bottom: -100px;
+      right: -100px;
+      transform: rotate(-30deg);
+      clip-path: polygon(60% 0%, 100% 60%, 40% 100%, 0% 40%);
     }
 
     .contenedor {
-      width: 100%;
+      background: #ffffffdd;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
       max-width: 600px;
-      padding: 20px;
+      width: 100%;
+      padding: 35px 30px;
+      backdrop-filter: saturate(180%) blur(20px);
     }
 
     .btn-regresar {
       display: inline-block;
-      background-color: #3498db;
+      background-color: #6c63ff;
       color: white;
       text-decoration: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      font-weight: bold;
+      padding: 12px 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: 0 8px 15px rgba(108, 99, 255, 0.3);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
     }
 
     .btn-regresar:hover {
-      background-color: #2980b9;
+      background-color: #5a54d1;
+      box-shadow: 0 12px 25px rgba(90, 84, 209, 0.5);
     }
 
     .seccion {
-      background-color: #ffffff;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      margin-bottom: 25px;
-      padding: 25px;
       text-align: center;
+      margin-bottom: 40px;
     }
 
     .seccion h2 {
-      margin-top: 0;
-      color: #2c3e50;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #6c63ff;
+      text-shadow: 1px 1px 4px rgba(108, 99, 255, 0.3);
     }
 
     .seccion ul {
       list-style: none;
       padding: 0;
-      margin: 15px 0;
+      margin: 0 auto 15px;
+      max-width: 350px;
     }
 
     .seccion ul li {
-      padding: 8px 0;
+      padding: 12px 0;
       border-bottom: 1px solid #eee;
-      font-size: 16px;
+      font-size: 17px;
+      color: #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .seccion ul li:last-child {
+      border-bottom: none;
+    }
+
+    .seccion ul li::before {
+      content: "✔️";
+      font-size: 18px;
+      color: #6c63ff;
     }
 
     .seccion p {
-      color: #555;
+      font-size: 16px;
+      color: #666;
       margin-top: 10px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
     }
 
     .whatsapp-btn {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
       color: white;
       border: none;
       border-radius: 50px;
-      padding: 12px 20px;
-      font-size: 16px;
+      padding: 14px 24px;
+      font-size: 17px;
+      font-weight: 700;
       text-decoration: none;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 5px 18px rgba(37, 211, 102, 0.6);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      z-index: 10;
     }
 
     .whatsapp-btn:hover {
       background-color: #1ebe5d;
+      box-shadow: 0 8px 22px rgba(30, 190, 93, 0.8);
     }
 
     .whatsapp-btn img {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .contenedor {
+        padding: 25px 20px;
+      }
+      .seccion h2 {
+        font-size: 22px;
+      }
+      .btn-regresar {
+        font-size: 16px;
+        padding: 10px 18px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="contenedor">
 
-    <!-- Botón de Regreso -->
+ 
     <a href="catalogo.html" class="btn-regresar">← Regresar</a>
 
-    <!-- Ayuda y Servicios -->
+ 
     <div class="seccion">
       <h2>🛠️ Ayuda y Servicios</h2>
       <ul>
-        <li>📞 Soporte Técnico 24/7: 555-1234</li>
-        <li>❓ Preguntas Frecuentes</li>
-        <li>📦 Envíos y devoluciones con seguimiento</li>
+        <li>Soporte Técnico 24/7: <strong>555-1234</strong></li>
+        <li>Preguntas Frecuentes</li>
+        <li>Envíos y devoluciones con seguimiento</li>
       </ul>
       <p>¿Tienes dudas? Contáctanos por WhatsApp para atención inmediata.</p>
     </div>
 
-    <!-- Servicios Adicionales -->
     <div class="seccion">
       <h2>🧰 Servicios Adicionales</h2>
       <ul>
-        <li>🧱 Instalación de productos (+S/ 20.00)</li>
-        <li>🚚 Entrega express (+S/ 10.00)</li>
-        <li>🔧 Asistencia técnica en domicilio</li>
-        <li>📦 Empaque reforzado para objetos delicados</li>
+        <li>Instalación de productos (+S/ 20.00)</li>
+        <li>Entrega express (+S/ 10.00)</li>
+        <li>Asistencia técnica en domicilio</li>
+        <li>Empaque reforzado para objetos delicados</li>
       </ul>
       <p><strong>¿Deseas incluir alguno?</strong> Consulta disponibilidad antes de pagar.</p>
     </div>
 
   </div>
 
-  <!-- Botón WhatsApp -->
-  <a class="whatsapp-btn" href="https://wa.me/51912345678" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-    WhatsApp
-  </a>
+<a
+  class="whatsapp-btn"
+  href="https://wa.me/51958845531"
+  target="_blank"
+  aria-label="Contactar por WhatsApp"
+>
+  <img
+    src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+    alt="WhatsApp"
+    loading="lazy"
+  />
+  WhatsApp
+</a>
+
 </body>
 </html>

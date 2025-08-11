@@ -38,10 +38,13 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 15px;
+      font-size: 16px;
+      cursor: pointer;
     }
 
     .metodo-item input[type="radio"] {
       transform: scale(1.3);
+      cursor: pointer;
     }
 
     .yape-info {
@@ -53,12 +56,14 @@
       display: none;
     }
 
-    input[type="text"] {
+    input[type="text"], input[type="file"] {
       width: 100%;
       padding: 10px;
       margin-bottom: 10px;
       border-radius: 6px;
       border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 14px;
     }
 
     button {
@@ -70,6 +75,7 @@
       border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
@@ -84,11 +90,20 @@
     table th, table td {
       padding: 10px;
       border: 1px solid #ddd;
+      text-align: center;
+      font-size: 14px;
     }
 
     table thead {
       background-color: #007bff;
       color: white;
+    }
+
+    #preview-comprobante img {
+      max-width: 200px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-top: 8px;
     }
 
     @media (max-width: 600px) {
@@ -97,7 +112,7 @@
       }
 
       table th, table td {
-        font-size: 14px;
+        font-size: 12px;
         padding: 8px;
       }
     }
@@ -107,7 +122,6 @@
   <div class="container">
     <a href="index.html" style="display:inline-block; margin-bottom:15px; color:#007bff; font-weight:bold; text-decoration:none;">← Volver al catálogo</a>
 
-  
     <div class="boleta" id="boleta">
       <h2>🧾 Boleta de Compra</h2>
       <table>
@@ -138,38 +152,42 @@
     </div>
 
     <div class="resumen-total" id="resumen-pago">
-      <button onclick="mostrarMetodos()">Pagar</button>
+      <button id="btnPagar" onclick="mostrarMetodos()">Pagar</button>
     </div>
 
     <div class="metodos" id="seccion-metodos" style="display: none;">
       <h2>💳 Elige un método de pago</h2>
 
-      <div class="metodo-item">
+      <label class="metodo-item">
         <input type="radio" name="metodo" onclick="seleccionarMetodo('yape')" /> Pago por Yape
-      </div>
+      </label>
 
-      <div class="metodo-item">
+      <label class="metodo-item">
         <input type="radio" name="metodo" onclick="seleccionarMetodo('transferencia')" /> Transferencia bancaria
-      </div>
+      </label>
 
       <!-- Formulario Yape -->
       <div class="yape-info" id="formulario-yape">
         <p><strong>📱 Yape al número:</strong> 958845531</p>
         <p><strong>👤 Nombre:</strong> Yeferson</p>
 
-        <label>Nombres:</label>
+        <label for="nombre">Nombres:</label>
         <input type="text" id="nombre" placeholder="Ingresa tus nombres" />
 
-        <label>Apellidos:</label>
+        <label for="apellidos">Apellidos:</label>
         <input type="text" id="apellidos" placeholder="Ingresa tus apellidos" />
 
-        <label>DNI:</label>
+        <label for="dni">DNI:</label>
         <input type="text" id="dni" placeholder="Ingresa tu DNI" />
 
-        <label>Ubicación:</label>
+        <label for="ubicacion">Ubicación:</label>
         <input type="text" id="ubicacion" placeholder="Ciudad / Dirección" />
 
-        <!-- ✅ Reglas del pago -->
+        <label for="comprobante">📸 Captura/comprobante de pago:</label>
+        <input type="file" id="comprobante" accept="image/*" />
+
+        <div id="preview-comprobante"></div>
+
         <div id="condiciones" style="margin-top: 15px;">
           <h3>📌 Reglas para completar el pago:</h3>
           <ul>
@@ -193,6 +211,7 @@
   <script>
     function mostrarMetodos() {
       document.getElementById("seccion-metodos").style.display = "block";
+      document.getElementById("btnPagar").disabled = true;
     }
 
     let metodoSeleccionado = "";
@@ -212,19 +231,42 @@
       }
     }
 
+    // Mostrar preview imagen comprobante
+    document.getElementById('comprobante').addEventListener('change', function(event) {
+      const preview = document.getElementById('preview-comprobante');
+      preview.innerHTML = ''; // limpiar previa
+      const file = event.target.files[0];
+      if(file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          preview.appendChild(img);
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
     function procesarPago() {
       if (metodoSeleccionado === "yape") {
         const nombre = document.getElementById("nombre").value.trim();
         const apellidos = document.getElementById("apellidos").value.trim();
         const dni = document.getElementById("dni").value.trim();
         const ubicacion = document.getElementById("ubicacion").value.trim();
+        const comprobante = document.getElementById("comprobante").files[0];
 
         if (!nombre || !apellidos || !dni || !ubicacion) {
           alert("⚠️ Por favor, completa todos los campos antes de confirmar el pago.");
           return;
         }
+        
+        if (!comprobante) {
+          alert("⚠️ Por favor, sube la captura o comprobante del pago para continuar.");
+          return;
+        }
 
-        // Confirmación
+        // Aquí podrías agregar validaciones extra de tamaño o tipo de archivo si quieres
+
         alert("✅ Gracias por su compra. En breve nos pondremos en contacto.");
 
         // Limpiar datos
@@ -232,13 +274,16 @@
         document.getElementById("apellidos").value = "";
         document.getElementById("dni").value = "";
         document.getElementById("ubicacion").value = "";
+        document.getElementById("comprobante").value = "";
+        document.getElementById("preview-comprobante").innerHTML = "";
 
         // Limpiar carrito
         localStorage.removeItem("carrito");
         cargarBoleta();
 
-        // Ocultar métodos
+        // Ocultar métodos y habilitar botón pagar
         document.getElementById("seccion-metodos").style.display = "none";
+        document.getElementById("btnPagar").disabled = false;
       } else if (metodoSeleccionado === "transferencia") {
         alert("❌ Este método aún no está disponible.");
       } else {
