@@ -2,95 +2,157 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Información - Ferretería Camila</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
       margin: 0;
-      padding: 20px;
+      padding: 30px 15px;
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .container {
       max-width: 900px;
       margin: 0 auto;
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background: #fff;
+      padding: 35px 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      line-height: 1.6;
+    }
+
+    a.back-button {
+      display: inline-block;
+      margin-bottom: 30px;
+      color: #007bff;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+    a.back-button:hover {
+      color: #0056b3;
+      text-decoration: underline;
     }
 
     h1 {
       text-align: center;
       color: #007bff;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      font-weight: 800;
+      font-size: 2.4rem;
+      letter-spacing: 1.2px;
+      user-select: none;
     }
 
-    h3 {
-      color: #333;
-      margin-top: 30px;
+    h3, h4 {
+      color: #2c3e50;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      font-weight: 700;
+      user-select: none;
+    }
+
+    h4 {
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h4::before {
+      content: "📌";
+      font-size: 1.4rem;
     }
 
     ul {
+      padding-left: 24px;
       margin-top: 10px;
-      padding-left: 20px;
+      color: #444;
     }
 
     ul li {
-      margin-bottom: 8px;
-      line-height: 1.5;
+      margin-bottom: 12px;
+      font-size: 1rem;
+      user-select: text;
     }
 
     p {
-      margin-top: 10px;
-      line-height: 1.6;
+      margin-top: 12px;
+      font-size: 1rem;
+      color: #555;
+      user-select: text;
     }
 
-    .back-button {
-      margin-bottom: 20px;
-      display: inline-block;
-      cursor: pointer;
+    /* Emphasis for special notes */
+    p strong {
       color: #007bff;
-      font-weight: bold;
-      text-decoration: none;
     }
 
-    .back-button:hover {
-      text-decoration: underline;
+    /* Emoji styling inside headings for visual harmony */
+    h3::before {
+      content: attr(data-emoji);
+      margin-right: 8px;
+      font-size: 1.4rem;
+      user-select: none;
+    }
+
+    /* Responsive typography */
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h3, h4 {
+        font-size: 1.1rem;
+      }
+      ul li, p {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <a class="back-button" href="index.html">🔙 Volver al inicio</a>
-    <h1>ℹ️ Información de la Ferreteria Camila</h1>
-     
-<h4>📌  Nuestra Historia: Ferretería Camila</h3>
+    <h1>ℹ️ Información de la Ferretería Camila</h1>
+
+    <h4>Nuestra Historia: Ferretería Camila</h4>
     <ul>
       <li>
-
-¡Hola! Somos Ferretería Camila, un negocio familiar con corazón y tradición en Ica, Chincha. Queremos compartir contigo cómo empezó nuestro sueño y por qué hoy somos tu mejor opción en materiales de construcción y seguridad industrial.
-
-Todo comenzó con mi padre, Carlos, un maestro de la construcción con más de 20 años de experiencia. Él siempre soñó con tener su propio negocio donde pudiera ofrecer productos de calidad y un trato honesto. Junto a mí, Camila (¡sí, el local lleva mi nombre!), abrimos hace años un pequeño local con lo básico: herramientas, clavos, pinturas y mucha pasión por el trabajo bien hecho.
-
-Con el tiempo, fuimos creciendo gracias a la confianza de clientes como tú. Ampliamos nuestro catálogo para incluir materiales de seguridad industrial, electricidad, fontanería y más, siempre priorizando la calidad y el asesoramiento personalizado. Hoy, aunque ya somos un negocio establecido, mantenemos ese espíritu familiar que nos distingue.
-
-En Ferretería Camila no solo vendemos productos; te ayudamos a encontrar soluciones para tus proyectos. Nos enorgullece ser parte del crecimiento de nuestra comunidad y de cada obra en la que participamos.
-
-📍 Nos encuentras en: Ica, Chincha
-🛠️ Especialidad: Materiales de construcción y seguridad industrial
-💡 Nuestro plus: Asesoría técnica con calidez y dedicación
-
-¡Te esperamos para seguir construyendo juntos! 🚧🔧
-
-— Con cariño, Camila y el equipo de Ferretería Camila
-
-( ¡Cada cliente que llega se convierte en parte de nuestra familia! 😊) </li>
-      
+        ¡Hola! Somos Ferretería Camila, un negocio familiar con corazón y tradición en Ica, Chincha. Queremos compartir contigo cómo empezó nuestro sueño y por qué hoy somos tu mejor opción en materiales de construcción y seguridad industrial.
+      </li>
+      <li>
+        Todo comenzó con mi padre, Carlos, un maestro de la construcción con más de 20 años de experiencia. Él siempre soñó con tener su propio negocio donde pudiera ofrecer productos de calidad y un trato honesto. Junto a mí, Camila (¡sí, el local lleva mi nombre!), abrimos hace años un pequeño local con lo básico: herramientas, clavos, pinturas y mucha pasión por el trabajo bien hecho.
+      </li>
+      <li>
+        Con el tiempo, fuimos creciendo gracias a la confianza de clientes como tú. Ampliamos nuestro catálogo para incluir materiales de seguridad industrial, electricidad, fontanería y más, siempre priorizando la calidad y el asesoramiento personalizado. Hoy, aunque ya somos un negocio establecido, mantenemos ese espíritu familiar que nos distingue.
+      </li>
+      <li>
+        En Ferretería Camila no solo vendemos productos; te ayudamos a encontrar soluciones para tus proyectos. Nos enorgullece ser parte del crecimiento de nuestra comunidad y de cada obra en la que participamos.
+      </li>
+      <li>
+        📍 Nos encuentras en: <strong>Ica, Chincha</strong><br />
+        🛠️ Especialidad: <strong>Materiales de construcción y seguridad industrial</strong><br />
+        💡 Nuestro plus: <strong>Asesoría técnica con calidez y dedicación</strong>
+      </li>
+      <li>
+        ¡Te esperamos para seguir construyendo juntos! 🚧🔧
+      </li>
+      <li style="font-style: italic; color:#555;">— Con cariño, Camila y el equipo de Ferretería Camila</li>
+      <li style="font-style: italic; color:#555;">(¡Cada cliente que llega se convierte en parte de nuestra familia! 😊)</li>
     </ul>
-    <!-- Reglas -->
-    <h4>📌 Reglas de la Tienda</h3>
+
+    <h4>Reglas de la Tienda</h4>
     <ul>
       <li>📅 Horario de atención: Lunes a sábado de 8:00 a.m. a 6:00 p.m.</li>
       <li>🔒 Las compras online requieren una cuenta con contraseña segura.</li>
@@ -99,8 +161,7 @@ En Ferretería Camila no solo vendemos productos; te ayudamos a encontrar soluci
       <li>📦 Las reservas de productos solo se mantienen por 24 horas si no hay pago.</li>
     </ul>
 
-    <!-- Devoluciones -->
-    <h3>🔁 Política de Devoluciones</h3>
+    <h3 data-emoji="🔁">Política de Devoluciones</h3>
     <p>Los clientes pueden solicitar la devolución de un producto dentro de los 7 días posteriores a la compra.</p>
     <ul>
       <li>🔍 El producto debe estar sin uso, con su empaque original y en perfecto estado.</li>
@@ -109,8 +170,7 @@ En Ferretería Camila no solo vendemos productos; te ayudamos a encontrar soluci
       <li>🚫 No se aceptan devoluciones de pinturas mezcladas, materiales cortados a medida ni productos en oferta.</li>
     </ul>
 
-    <!-- Garantías -->
-    <h3>🧰 Garantía de Productos</h3>
+    <h3 data-emoji="🧰">Garantía de Productos</h3>
     <p>Algunos productos ofrecidos por Ferretería Camila cuentan con garantía directa del fabricante.</p>
     <ul>
       <li>📅 El tiempo de garantía varía entre 3 a 12 meses según el producto.</li>
@@ -119,8 +179,7 @@ En Ferretería Camila no solo vendemos productos; te ayudamos a encontrar soluci
       <li>⏳ El proceso de respuesta puede tomar hasta 5 días hábiles.</li>
     </ul>
 
-    <!-- Términos y Condiciones -->
-    <h3>📜 Términos y Condiciones</h3>
+    <h3 data-emoji="📜">Términos y Condiciones</h3>
     <p>Al acceder y utilizar el sitio web de Ferretería Camila, aceptas nuestras reglas y políticas.</p>
     <ul>
       <li>🔐 La información personal proporcionada se usará solo para fines de contacto y facturación.</li>
